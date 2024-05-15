@@ -54,6 +54,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -145,14 +146,15 @@ fun metododetarjetaContenido(navController: NavHostController){
             //segundo cuadro
             Box(contentAlignment = Alignment.Center,modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 70.dp)){
+                .padding(bottom = 70.dp)
+                ){
                 //2.1
 
                 Box(contentAlignment = Alignment.Center,modifier= Modifier
                     .width(150.dp)
                     .height(20.dp)
 
-                    .offset(x = 35.dp, y = 140.dp)
+                    .offset(x = 35.dp, y = 65.dp)
                     .background(Color(106, 57, 0))
                     .align(Alignment.TopStart)
 
@@ -168,8 +170,8 @@ fun metododetarjetaContenido(navController: NavHostController){
                     .padding(26.dp)
                     .clip(RoundedCornerShape(20.dp))
 
-                    .border(4.dp, Color.Black, RoundedCornerShape(20.dp))
-                    //.background(Color.Gray)
+                    .border(0.dp, Color.Black, RoundedCornerShape(20.dp))
+                    .background(Color.Gray.copy(alpha = 0.5f))
                 ){
                     Column() {
                         //texfiel dentro del cuadro
@@ -178,10 +180,13 @@ fun metododetarjetaContenido(navController: NavHostController){
                         var hidden by remember { mutableStateOf(true)
                         }
                         OutlinedTextField(value = tarjeta,
-                            onValueChange = { newTarjeta -> tarjeta = newTarjeta }
+                            onValueChange = { newTarjeta -> if(newTarjeta.length<=7){
+                                tarjeta = newTarjeta }}
                             , label = { Text("#Tarjerta:",color= Color.White) },
                             placeholder = { Text("Ingrese solo valores enteros",color= Color.White) },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Number,
+                            ),
                             leadingIcon = {
                                 Icon(imageVector = Icons.Default.AccountCircle,contentDescription = null
                                     , tint = Color.White)
@@ -199,7 +204,7 @@ fun metododetarjetaContenido(navController: NavHostController){
 
 
                         OutlinedTextField(value = clave
-                            , onValueChange = {newClave ->clave =newClave}
+                            , onValueChange = {newClave ->if(newClave.length<=4){clave =newClave}}
                             ,label={ Text("Clave:",color= Color.White) }
                             , placeholder = { Text("Ingrese solo valores enteros",color= Color.White) }
                             ,
@@ -223,7 +228,7 @@ fun metododetarjetaContenido(navController: NavHostController){
                             shape = RoundedCornerShape(0.dp)
                             , modifier = Modifier.align(Alignment.End)
                         ) {
-                            Text("Siguiente")
+                            Text("Siguiente",color=Color.White)
 
                         }
 

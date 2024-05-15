@@ -51,7 +51,8 @@ fun ReservaExitosaView(navController: NavHostController) {
     val backgroundColor = Color(106, 57, 0)
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .background(backgroundColor)
     ) {
         Column(
@@ -60,28 +61,22 @@ fun ReservaExitosaView(navController: NavHostController) {
             modifier = Modifier.padding(horizontal = 32.dp, vertical = 64.dp)
         ) {
 
-            Text(
-                text = "¡PAGO DE RESERVACIÓN EXITOSA!",
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 32.dp)
-            )
-
+            Text("!PAGO DE ", fontSize = 32.sp, fontWeight = FontWeight.Bold)
+            Text("RESERVACION",fontSize = 32.sp, fontWeight = FontWeight.Bold)
+            Text("EXITOSA!!",fontSize = 32.sp, fontWeight = FontWeight.Bold)
             // Imagen de check
             Image(
                 painter = painterResource(id = R.drawable.check),
                 contentDescription = "Background Image",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(300.dp)
+                    .size(350.dp)
             )
             Button(
                 onClick = {navController.navigate("reserva")},
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
-                Text("Inicio")
+                Text("Inicio",color=Color.White)
             }
         }
     }

@@ -74,8 +74,8 @@ fun plinSuperior(navController: NavHostController) {
                 IconButton(onClick = { navController.navigate("elige") }) {
                     Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Volver")
                 }
-                Text("PLIN"
-                    , fontSize = 56.sp
+                Text("Pago por Plin"
+                    , fontSize = 32.sp
                     , fontWeight = FontWeight.Bold
                     ,color= Color.White
                 )

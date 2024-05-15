@@ -2,6 +2,8 @@ package com.example.vistasep.view
 
 
 import android.annotation.SuppressLint
+import android.view.Surface
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -47,7 +49,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-
+import com.example.vistasep.BotonBar
+import androidx.compose.material3.Surface
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.ui.res.painterResource
+import com.example.vistasep.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,62 +63,13 @@ import coil.compose.AsyncImage
 fun RutasView(navController:NavHostController) {
     Scaffold(
         //topBar = { Tollbar()},
-        bottomBar = {
-
-            BottomAppBar()
-            {
-                Row(horizontalArrangement = Arrangement.SpaceEvenly, // Alinea los elementos de manera uniforme
-                    modifier = Modifier.fillMaxWidth()) {
-
-
-                    val iconSize = 50.dp // Tamaño de los iconos
-
-
-                    //boton1
-                    IconButton(onClick = { navController.navigate("reserva") }) {
-                        Icon(
-                            Icons.Filled.Home,
-                            contentDescription = "Localized description",
-                            modifier = Modifier
-                                .size(iconSize)
-                        )
-
-                    }
-                    //boton2
-                    IconButton(onClick = { navController.navigate("ruta") }) {
-                        Icon(
-                            Icons.Filled.LocationOn,
-                            contentDescription = "Localized description",
-                            modifier = Modifier.size(iconSize)
-                        )
-
-                    }
-                    //boton3
-                    IconButton(onClick = { navController.navigate("descuento") }) {
-                        Icon(
-                            Icons.Filled.ShoppingCart,
-                            contentDescription = "Localized description",
-                            modifier = Modifier.size(iconSize)
-                        )
-
-                    }
-                    //boton4
-                    IconButton(onClick = { navController.navigate("metodos") }) {
-                        Icon(
-                            Icons.Filled.AccountCircle,
-                            contentDescription = "Localized description",
-                            modifier = Modifier.size(iconSize)
-                        )
-
-                    }
-
-                }
-            }
-
-
-        },
+        bottomBar = { BotonBar(navController)},
         //el contenedor dentro
-        content = { imagen2(navController)}
+        content = { paddingInterno ->
+            Surface(modifier = Modifier.padding(paddingInterno)){ //llamamos al padding interno, asi no nos muestra errores el scaffold
+                imagen2(navController)//Contenido Interno
+            }
+        }
     )
 
 
@@ -120,9 +78,18 @@ fun RutasView(navController:NavHostController) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun imagen2(navController:NavHostController){
-    Box(modifier= Modifier
+    Box(modifier = Modifier
         .fillMaxSize()
-        .background(Color.White)){
+        .background(Color(106, 57, 0))) {
+        Image(
+            painter = painterResource(id = R.drawable.caminos),
+            contentDescription = "Descripción de la imagen",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(400.dp)
+                .align(Alignment.Center))
+                    // .alpha(0.1f)
+
         Column{
             Box(contentAlignment = Alignment.Center,modifier= Modifier
                 .fillMaxWidth()
@@ -130,8 +97,8 @@ fun imagen2(navController:NavHostController){
                 .padding(26.dp)
                 .clip(RoundedCornerShape(20.dp))
 
-                .border(4.dp, Color.Black, RoundedCornerShape(20.dp))
-                //.background(Color.Gray)
+                .border(0.dp, Color.Black, RoundedCornerShape(20.dp))
+                .background(Color.Gray.copy(alpha = 0.4f))
             ){
 
                 Column {
@@ -160,27 +127,37 @@ fun imagen2(navController:NavHostController){
                     var Hasta by remember{ mutableStateOf("") }
 
                     OutlinedTextField(value = Desde,
-                        onValueChange = { newDesde -> Desde = newDesde }
-                        , label = { Text("Desde:")},
+                        onValueChange = { newDesde -> if(newDesde.length<=20) Desde = newDesde }
+                        , label = { Text("Desde:", color = Color.White)},
                         placeholder = { Text("Ingrese el Lugar de origen  ")},
                         leadingIcon = {
                             Icon(imageVector = Icons.Default.Place,contentDescription = null) }
-                        , keyboardOptions = KeyboardOptions(keyboardType= KeyboardType.Text))
+                        , keyboardOptions = KeyboardOptions(keyboardType= KeyboardType.Text)
+                    , colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedTextColor =Color.Black ,
+                             focusedBorderColor = Color.White,
+                        unfocusedBorderColor = Color.White,
+                        cursorColor = Color.White
+                    ))
 
 
 
                     Spacer(modifier = Modifier.size(20.dp))
 
                     OutlinedTextField(value = Hasta
-                        , onValueChange = {newHasta ->Hasta =newHasta}
-                        ,label={ Text("Hasta:")}
+                        , onValueChange = {newHasta ->if(newHasta.length<=20)Hasta =newHasta}
+                        ,label={ Text("Hasta:", color = Color.White)}
                         , placeholder = { Text("Ingrese un lugar de destino")}
                         ,  leadingIcon ={Icon(imageVector = Icons.Default.Place,contentDescription = null)}
-                        , keyboardOptions = KeyboardOptions(keyboardType= KeyboardType.Text))
+                        , keyboardOptions = KeyboardOptions(keyboardType= KeyboardType.Text)
+                                ,colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color.White, // Color cuando el campo está enfocado
+                        unfocusedBorderColor = Color.White, // Color cuando el campo no está enfocado
+                        cursorColor = Color.Blue // Color del cursor
                     //,modifier=Modifier.padding(start=10.dp)
 
 
-
+                    ))
 
 
                     Spacer(modifier = Modifier.size(5.dp))
@@ -190,7 +167,7 @@ fun imagen2(navController:NavHostController){
                         shape = RoundedCornerShape(0.dp)
                         , modifier = Modifier.align(Alignment.End)
                     ) {
-                        Text("Buscar")
+                        Text("Buscar",color=Color.White)
 
                     }
 
@@ -198,7 +175,9 @@ fun imagen2(navController:NavHostController){
 
                 }
             }
-            Box(contentAlignment = Alignment.TopCenter,modifier = Modifier.fillMaxSize().padding(26.dp)){
+            Box(contentAlignment = Alignment.TopCenter,modifier = Modifier
+                .fillMaxSize()
+                .padding(26.dp)){
 
                 //inicio
                 var IntrudicirText by remember { mutableStateOf(TextFieldValue("")) }
@@ -207,7 +186,9 @@ fun imagen2(navController:NavHostController){
                     onValueChange = { newText -> IntrudicirText = newText },
                     readOnly = true,
                     label = { Text("  Este TextField no mostrará el dato") },
-                    modifier=Modifier.height(300.dp).fillMaxWidth()
+                    modifier= Modifier
+                        .height(300.dp)
+                        .fillMaxWidth()
                 )
 
                 //finlal

@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -97,7 +98,7 @@ fun EligeContenido(navController: NavHostController) {
             .fillMaxSize()
             .background(backgroundColor)
     ) {
-
+        val tranparente= ButtonDefaults.buttonColors(Color.White.copy(0.5f))
         Image(
             painter = painterResource(id = R.drawable.caminos),
             contentDescription = "Descripción de la imagen",
@@ -115,18 +116,21 @@ fun EligeContenido(navController: NavHostController) {
             Button(
                 onClick = { navController.navigate("metodos") },
                 modifier = Modifier.padding(32.dp).width(150.dp).height(50.dp)
+                ,colors = tranparente
             ) {
                 Text("TARJETA", color = Color.White, fontSize = 20.sp)
             }
             Button(
                 onClick = { navController.navigate("yape") },
                 modifier = Modifier.padding(32.dp).width(150.dp).height(50.dp)
+                ,colors = tranparente
             ) {
                 Text("YAPE", color = Color.White, fontSize = 20.sp)
             }
             Button(
                 onClick = { navController.navigate("plin") },
                 modifier = Modifier.padding(32.dp).width(150.dp).height(50.dp)
+                ,colors = tranparente
             ) {
                 Text("PLIN", color = Color.White, fontSize = 20.sp)
             }
@@ -134,54 +138,3 @@ fun EligeContenido(navController: NavHostController) {
     }
 }
 
-/*
-@Composable
-fun EligeBottom(navController: NavHostController) {
-    BottomAppBar()
-    {
-        Row(horizontalArrangement = Arrangement.SpaceEvenly,
-            modifier = Modifier.fillMaxWidth()) {
-
-            val iconSize = 50.dp
-
-            //boton1
-            IconButton(onClick = { navController.navigate("reserva") }) {
-                Icon(
-                    Icons.Filled.Home,
-                    contentDescription = "Localized description",
-                    modifier = Modifier
-                        .size(iconSize)
-                )
-
-            }
-            //boton2
-            IconButton(onClick = { navController.navigate("ruta") }) {
-                Icon(
-                    Icons.Filled.LocationOn,
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(iconSize)
-                )
-
-            }
-            //boton3
-            IconButton(onClick = { navController.navigate("descuento") }) {
-                Icon(
-                    Icons.Filled.ShoppingCart,
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(iconSize)
-                )
-
-            }
-            //boton4
-            IconButton(onClick = { navController.navigate("metodos") }) {
-                Icon(
-                    Icons.Filled.AccountCircle,
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(iconSize)
-                )
-
-            }
-
-        }
-    }
-}*/

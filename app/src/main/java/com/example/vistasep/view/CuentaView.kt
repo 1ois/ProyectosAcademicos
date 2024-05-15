@@ -53,7 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.example.vistasep.ui.theme.Purple40
+
 import androidx.compose.ui.res.painterResource
 import com.example.vistasep.BotonBar
 import com.example.vistasep.R
@@ -78,17 +78,18 @@ fun CuentaView(navController: NavHostController) {
 }
 @Composable
 fun cuentaContenido() {
-    Box(modifier=Modifier.fillMaxSize().background(Color(106, 57, 0)) ){
+    Box(modifier=Modifier.fillMaxSize().background(Color(106, 57, 0) )){
         Image(  painter = painterResource(id = R.drawable.caminos),
             contentDescription = "Descripción de la imagen",
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(400.dp)
                 .align(Alignment.Center)
-                .alpha(0.3f)
+               // .alpha(0.1f)
         )
 
-
+        val colorIconos=Color.White
+        val ColorFondo=Color.White
 
         Column {
             //CUADRO 1
@@ -98,7 +99,7 @@ fun cuentaContenido() {
                     .fillMaxWidth()
                     .height(120.dp)
                     .border(1.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(alpha = 0.5f)),
+                colors = ButtonDefaults.buttonColors(ColorFondo.copy(alpha = 0.5f)),
                 shape = CutCornerShape(0.dp)
             )
             {
@@ -160,7 +161,7 @@ fun cuentaContenido() {
                     .height(80.dp)
 
                     .border(1.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(0.5f)),
+                colors = ButtonDefaults.buttonColors(Color.White.copy(0.5f)),
                 shape = CutCornerShape(0.dp),
 
 
@@ -178,7 +179,7 @@ fun cuentaContenido() {
                         contentDescription = null,
                         modifier = Modifier
                             .size(40.dp),
-                        tint = Color.Black
+                        tint = colorIconos
 
                     )
                     Spacer(modifier = Modifier.size(ButtonDefaults.IconSize))
@@ -207,7 +208,7 @@ fun cuentaContenido() {
                     .height(80.dp)
 
                     .border(0.5.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(0.5f)),
+                colors = ButtonDefaults.buttonColors(ColorFondo.copy(0.5f)),
                 shape = CutCornerShape(0.dp)
 
             )
@@ -222,7 +223,7 @@ fun cuentaContenido() {
                         contentDescription = null,
                         modifier = Modifier
                             .size(40.dp),
-                        tint = Color.Black
+                        tint = colorIconos
                     )
                     Spacer(modifier = Modifier.size(ButtonDefaults.IconSize))
                     Column {
@@ -246,7 +247,7 @@ fun cuentaContenido() {
                     .height(80.dp)
 
                     .border(1.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(0.5f)),
+                colors = ButtonDefaults.buttonColors(ColorFondo.copy(0.5f)),
                 shape = CutCornerShape(0.dp)
 
             )
@@ -261,7 +262,7 @@ fun cuentaContenido() {
                         contentDescription = null,
                         modifier = Modifier
                             .size(40.dp),
-                        tint = Color.Black
+                        tint = colorIconos
                     )
                     Spacer(modifier = Modifier.size(ButtonDefaults.IconSize))
                     Column {
@@ -289,7 +290,7 @@ fun cuentaContenido() {
                     .height(80.dp)
 
                     .border(1.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(0.5f)),
+                colors = ButtonDefaults.buttonColors(ColorFondo.copy(0.5f)),
                 shape = CutCornerShape(0.dp)
 
             )
@@ -304,7 +305,7 @@ fun cuentaContenido() {
                         contentDescription = null,
                         modifier = Modifier
                             .size(40.dp),
-                        tint = Color.Black
+                        tint = colorIconos
                     )
                     Spacer(modifier = Modifier.size(ButtonDefaults.IconSize))
                     Column {
@@ -332,7 +333,7 @@ fun cuentaContenido() {
                     .height(80.dp)
 
                     .border(1.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(0.5f)),
+                colors = ButtonDefaults.buttonColors(ColorFondo.copy(0.5f)),
                 shape = CutCornerShape(0.dp)
 
             )
@@ -347,7 +348,7 @@ fun cuentaContenido() {
                         contentDescription = null,
                         modifier = Modifier
                             .size(40.dp),
-                        tint = Color.Black
+                        tint = colorIconos
                     )
                     Spacer(modifier = Modifier.size(ButtonDefaults.IconSize))
                     Column {
@@ -375,7 +376,7 @@ fun cuentaContenido() {
                     .height(80.dp)
 
                     .border(1.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(0.5f)),
+                colors = ButtonDefaults.buttonColors(ColorFondo.copy(0.5f)),
                 shape = CutCornerShape(0.dp)
 
             )
@@ -390,7 +391,7 @@ fun cuentaContenido() {
                         contentDescription = null,
                         modifier = Modifier
                             .size(40.dp),
-                        tint = Color.Black
+                        tint = colorIconos
 
 
                     )
@@ -420,7 +421,7 @@ fun cuentaContenido() {
                     .height(80.dp)
 
                     .border(1.dp, Color.Gray),
-                colors = ButtonDefaults.buttonColors(Purple40.copy(0.5f)),
+                colors = ButtonDefaults.buttonColors(ColorFondo.copy(0.5f)),
                 shape = CutCornerShape(0.dp)
 
             )
@@ -435,7 +436,7 @@ fun cuentaContenido() {
                         contentDescription = null,
                         modifier = Modifier
                             .size(40.dp),
-                        tint = Color.Black
+                        tint = colorIconos
 
 
                     )
